@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/common.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:v="http://validators.epn.edu.ec.com"
+	xmlns:ps="http://primefaces.org/apark">
+
+
+	<ui:define name="pageTitle">Tipo de Proveedor</ui:define>
+	<ui:define name="body">
+
+		<h:head>
+
+			<script type="text/javascript">
+	
+		//<![CDATA[
+		function printDiv(divName){
+			var f =new Date();
+			var printContents =document.getElementById(divName).innerHTML;
+			var originalContents =document.body.innerHTML;
+			document.body.innerHTML=printContents;
+			window.print();
+			document.body.innerHTML=originalContents;
+		}
+
+		//]]>
+
+	</script>
+		</h:head>
+
+
+		<h:body>
+
+
+			<h:form id="formprincipal">
+				<p:growl id="messagesForm" showDetail="true" sticky="true"
+					autoupdate="true" life="3000" />
+
+				<p:panel>
+					<p:fieldset legend="TIPOS PROVEEDOR"
+						style="border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+	border-style: double;
+	border-width: 1px;
+	border-color: #11B2F1;border-style: double; border-width: 1px; border-color: #11B2F1
+	;width: '90%';">
+						<br />
+						<br />
+						<p:commandLink process="@this" onclick="PF('nuevoTP').show()"
+							update=":formNuevoTP,@this,@([id$=messagesForm])">
+							<center>
+								<h:graphicImage value="/images/archivos/agregar.png"
+									title="Guardar" style="border:0px solid #CAD6E0;" width="36"
+									height="35" />
+							</center>
+							<center>
+								<h:outputText value="Agrear Tipo Proveedor" />
+							</center>
+						</p:commandLink>
+						<br />
+						<br />
+
+						<p:dataTable value="#{tipoProveedorController.tiposProveedor}"
+							var="tipo"
+							style="border: 0;background: 0;width:100%;-webkit-box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;
+-moz-box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;
+box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;">
+							<p:column headerText="Nombre">
+								<h:outputText value="#{tipo.nombreTpv}" />
+							</p:column>
+							<p:column headerText="Descripción">
+								<h:outputText value="#{tipo.descrTpv}" />
+							</p:column>
+						</p:dataTable>
+
+
+					</p:fieldset>
+				</p:panel>
+
+			</h:form>
+
+
+
+								<!-- Panel de registro que se abre en un dialogo	 -->
+								
+			<p:dialog id="panelNuevoTP" resizable="true" widgetVar="nuevoTP"
+				modal="true" showEffect="explode" hideEffect="fade"
+				responsive="true" dynamic="true" width="65%">
+
+
+				<h:form id="formNuevoTP">
+
+					<p:fieldset
+						style="border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+	border-style: double;
+	border-width: 1px;
+	border-color: #11B2F1;border-style: double; border-width: 1px; border-color: #11B2F1">
+
+
+						<br />
+						<br />
+						<center>
+							<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
+								style="-webkit-box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;
+-moz-box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;
+box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;">
+
+
+								<p:outputLabel id="lblNombre" for="nombre" value="Nombre: " />
+								<p:inputText id="nombre"
+									value="#{tipoProveedorController.nuevoTipoProveedor.nombreTpv}"
+									required="true"
+									requiredMessage="Debe ingresar el nombre del proveedor">
+								</p:inputText>
+								<p:outputLabel id="lblDeesc" for="desc" value="Descripción " />
+								<p:inputText id="desc"
+									value="#{tipoProveedorController.nuevoTipoProveedor.descrTpv}">
+								</p:inputText>
+							</p:panelGrid>
+							<br /> <br />
+
+
+							<center>
+								<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
+									style="-webkit-box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;
+-moz-box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;
+box-shadow: 0px 9px 18px 4px rgba(0,0,0,0.73)!important;">
+
+									<p:commandLink
+										actionListener="#{tipoProveedorController.agregarTipoProveedor}"
+										process="@this,nombre,desc"
+										update="@this,@([id$=messagesForm],[id$=formPrincipal]),formNuevoTP">
+										<center>
+											<h:graphicImage value="/images/archivos/agregar.png"
+												title="Guardar" style="border:0px solid #CAD6E0;" width="36"
+												height="35" />
+										</center>
+
+									</p:commandLink>
+
+									<p:commandLink onclick="PF('nuevoTP').hide();" process="@none">
+										<p:graphicImage value="/images/archivos/atras.png" width="35"
+											height="36" title="Atrás">
+										</p:graphicImage>
+									</p:commandLink>
+
+								</p:panelGrid>
+
+							</center>
+
+
+
+						</center>
+					</p:fieldset>
+				</h:form>
+			</p:dialog>
+
+		</h:body>
+
+
+
+		<script type="text/javascript">
+			function start(){
+			PF('statusDialog').show();
+			} 
+
+			function stop(){
+			PF('statusDialog').hide();
+			}
+
+		</script>
+
+	</ui:define>
+</ui:composition>
