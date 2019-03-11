@@ -8,6 +8,7 @@
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/ServiciosSeguridadEPN"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/JBoss EAP 7.x Runtime">
+
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web;jst.jsf"/>
 		</attributes>
@@ -24,4 +25,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
+
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.jsf;jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="build/classes"/>
+
 </classpath>
