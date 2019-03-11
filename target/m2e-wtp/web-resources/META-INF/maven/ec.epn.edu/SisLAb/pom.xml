@@ -170,24 +170,7 @@
 			<version>2.8.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.github.MaterialPrime</groupId>
-			<artifactId>material-prime</artifactId>
-			<version>v0.0.2</version>
-		</dependency>
-
-
-
-		<dependency>
-			<groupId>ec.edu.epn</groupId>
-			<artifactId>glpi</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>ec.edu.epn</groupId>
-			<artifactId>firmadigital</artifactId>
-			<version>1.0</version>
-		</dependency>
+		
 	</dependencies>
 
 
